@@ -65,3 +65,22 @@ def saludar(nombre):
 
 resultado_saludar = saludar("Carlos")  # Hola Carlos
 print(resultado_saludar)  # None
+
+
+# Ejemplo de alcance de variables
+variable_global = 100
+
+
+def funcion_nivel1():
+    print(variable_global)
+    variable_local_1 = 50
+
+    def funcion_nivel2():
+        print(variable_global)
+        print(variable_local_1)
+        variable_local_2 = 25
+
+    print(variable_local_2)  # error
+
+
+print(variable_local_1)  # error
