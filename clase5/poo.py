@@ -1,11 +1,3 @@
-def main():
-    print("Hello World")
-
-
-if __name__ == "__main__":
-    main()
-
-
 # Definición básica de una clase
 class NombreDeLaClase:
     # Atributos de clase (compartidos por todas las instancias)
@@ -226,3 +218,235 @@ print(empleado_tiempo_completo)
 empleado_con_comision = EmpleadoConComision("Luis", 2000, 500)
 print(empleado_con_comision.calcular_salario())  # 2500
 print(empleado_con_comision)
+
+
+# Poliformismo
+class Animal:
+    def hacer_sonido(self):
+        pass  # Método base que será sobrescrito
+
+
+class Perro(Animal):
+    def hacer_sonido(self):
+        return "¡Guau guau!"
+
+
+class Gato(Animal):
+    def hacer_sonido(self):
+        return "¡Miau!"
+
+
+class Vaca(Animal):
+    def hacer_sonido(self):
+        return "¡Muuu!"
+
+
+class Loro(Animal):
+    def hacer_sonido(self):
+        return "¡Muuu!"
+
+
+# Lista de animales de diferentes clases
+animales = [Perro(), Gato(), Vaca(), Loro()]
+# Polimorfismo en acción
+for animal in animales:
+    print(animal.hacer_sonido())  # Cada animal hace su sonido específico
+
+
+# Encapsulamiento
+class CuentaBancaria:
+    def __init__(self, titular, saldo_inicial):
+        self.titular = titular  # Público - accesible para todos
+        self._saldo = saldo_inicial  # Protegido - solo para uso interno
+        self.__pin = "0000"  # Privado - muy restringido
+
+    def depositar(self, cantidad):
+        if cantidad > 0:
+            self._saldo += cantidad
+            return True
+        return False
+
+    def retirar(self, cantidad, pin):
+        if pin == self.__pin and cantidad > 0 and cantidad <= self._saldo:
+            self._saldo -= cantidad
+            return True
+        return False
+
+    def obtener_saldo(self):
+        return self._saldo
+
+    def cambiar_pin(self, pin_actual, pin_nuevo):
+        if pin_actual == self.__pin:
+            self.__pin = pin_nuevo
+            return True
+        return
+
+
+cuenta_bancaria = CuentaBancaria("Juan Pérez", 1000)
+cuenta_bancaria.depositar(500)
+cuenta_bancaria.retirar(200, "0000")
+
+cuenta = CuentaBancaria("Ana López", 1000000)
+# Acceso a atributo público
+print(cuenta.titular)  # Ana López
+# Interfaz pública para interactuar con la cuenta
+cuenta.depositar(500000)
+print(cuenta.obtener_saldo())  # 1500000
+exito = cuenta.retirar(200000, "0000")
+if exito:
+    print("Retiro exitoso")
+else:
+    print("Retiro fallido")
+# Intento de acceso directo (no recomendado)
+print(cuenta._saldo)  # Funciona, pero viola encapsulamiento
+# Intento de acceso a atributo privado
+# print(cuenta.__pin)  # Error!
+# El nombre real es _CuentaBancaria__pin
+
+
+# Properties
+class Persona:
+    def __init__(self, nombre, edad):
+        self._nombre = nombre
+        self._edad = edad
+
+    @property
+    def edad(self):
+        return self._edad
+
+    @edad.setter
+    def edad(self, nueva_edad):
+        if nueva_edad > 0 and nueva_edad < 120:
+            self._edad = nueva_edad
+        else:
+            raise ValueError("Edad inválida")
+
+    @property
+    def nombre(self):
+        return self._nombre
+
+
+# Uso
+persona = Persona("Carlos", 25)
+print(persona.edad)  # Usa el getter -> 25
+persona.edad = 30  # Usa el setter
+try:
+    persona.edad = -5  # Lanza una excepción
+except ValueError:
+    print("Intento de asignar una edad inválida")
+print(persona.edad)
+
+
+# Caso práctico: Sistema de Biblioteca
+class Libro:
+    def __init__(self, titulo, autor, año_publicacion, isbn):
+        self.titulo = titulo
+        self.autor = autor
+        self.año_publicacion = año_publicacion
+        self._isbn = isbn  # Protegido
+        self._disponible = True  # Protegido
+        self._veces_prestado = 0  # Protegido
+
+    @property
+    def disponible(self):
+        return self._disponible
+
+    @property
+    def isbn(self):
+        return self._isbn
+
+    def prestar(self):
+        if self._disponible:
+            self._disponible = False
+            self._veces_prestado += 1
+            return True
+        return False
+
+    def devolver(self):
+        if not self._disponible:
+            self._disponible = True
+            return True
+        return False
+
+    def __str__(self):
+        return f"'{self.titulo}' por {self.autor}"
+
+    def __eq__(self, otro):
+        return isinstance(otro, Libro) and self._isbn == otro._isbn
+
+
+variable_libro_2 = Libro("1984", "George Orwell", 1949, "123-456-7892")
+variable_libro = Libro("1984", "George Orwell", 1949, "123-456-789")
+if variable_libro_2 == variable_libro:
+    print("Son iguales")
+else:
+    print("No son iguales")
+
+
+class LibroFisico(Libro):
+    def __init__(
+        self, titulo, autor, año_publicacion, isbn, ubicacion, estado_fisico="Bueno"
+    ):
+        super().__init__(titulo, autor, año_publicacion, isbn)
+        self.ubicacion = ubicacion  # Ej: "Estante A-3"
+        self.estado_fisico = estado_fisico
+
+    def mostrar_info(self):
+        estado = "Disponible" if self._disponible else "Prestado"
+        return f"{self} - Ubicación: {self.ubicacion}, Estado: {estado}, Condición: {self.estado_fisico}"
+
+
+class LibroDigital(Libro):
+    def __init__(self, titulo, autor, año_publicacion, isbn, formato, tamaño_mb):
+        super().__init__(titulo, autor, año_publicacion, isbn)
+        self.formato = formato  # Ej: "PDF", "EPUB"
+        self.tamaño_mb = tamaño_mb
+        self._descargas_simultaneas = 0
+        self._max_descargas = 3
+
+    def prestar(self):
+        if self._descargas_simultaneas < self._max_descargas:
+            self._descargas_simultaneas += 1
+            self._veces_prestado += 1
+            return True
+        return False
+
+    def devolver(self):
+        if self._descargas_simultaneas > 0:
+            self._descargas_simultaneas -= 1
+            return True
+        return False
+
+    def mostrar_info(self):
+        return f"{self} - Formato: {self.formato}, Tamaño: {self.tamaño_mb}MB, Descargas: {self._descargas_simultaneas}/{self._max_descargas}"
+
+
+# Crear diferentes tipos de libros
+libro_fisico = LibroFisico(
+    "Cien años de soledad",
+    "Gabriel García Márquez",
+    1967,
+    "978-84-376-0494-7",
+    "Estante A-3",
+)
+libro_digital = LibroDigital(
+    "1984", "George Orwell", 1949, "978-0-452-28423-4", "PDF", 2.5
+)
+
+# Lista de libros (polimorfismo)
+biblioteca = [libro_fisico, libro_digital]
+# Procesar todos los libros de manera uniforme
+for libro in biblioteca:
+    print(libro.mostrar_info())
+
+    # Prestar libro
+    if libro.prestar():
+        print(f"{libro} prestado exitosamente")
+    else:
+        print(f" No se pudo prestar {libro}")
+
+# Comparar libros usando __eq__
+libro_fisico2 = LibroFisico(
+    "Otra edición", "Otro autor", 2000, "978-84-376-0494-7", "Estante B-1"
+)
+print(f"¿Son el mismo libro? {libro_fisico == libro_fisico2}")  # True (mismo ISBN)
