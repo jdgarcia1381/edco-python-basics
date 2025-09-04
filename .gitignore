@@ -88,3 +88,6 @@ GitHub.sublime-settings
 
 # History files
 .history
+
+# DB
+*.db
