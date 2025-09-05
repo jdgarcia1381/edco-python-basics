@@ -9,7 +9,7 @@ conexion = mysql.connector.connect(
 cursor = conexion.cursor()
 
 # Consulta básica - seleccionar todo
-cursor.execute("SELECT * FROM usuarios ORDER BY email DESC LIMIT 10 ")
+cursor.execute("SELECT * FROM usuarios")
 
 # Recuperar todos los resultados
 todos_usuarios = cursor.fetchall()
