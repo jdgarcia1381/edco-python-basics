@@ -4,7 +4,7 @@ import mysql.connector
 
 # Crear conexión
 conexion = mysql.connector.connect(
-    host="201.130.6.1",  # o dirección IP
+    host="localhost",  # o dirección IP
     user="root",
     password=os.environ.get("MYSQL_PASSWORD"),  # POR SEGURIDAD, NO QUEMAR PASSWORD
     database="prueba_python",

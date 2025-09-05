@@ -2,7 +2,13 @@
 
 ## Configuración ambiente desarrollo
 
-Crear copia de archivo variables de entorno:
+1. Instalar dependencias:
+
+```
+python -m pip install -r requirements.txt
+```
+
+2. Crear copia de archivo variables de entorno:
 
 ```
 cp .env.example .env
