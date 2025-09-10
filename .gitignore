@@ -91,3 +91,4 @@ GitHub.sublime-settings
 
 # DB
 *.db
+*.sqlite3
