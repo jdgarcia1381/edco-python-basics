@@ -9,5 +9,7 @@ class Libro(models.Model):
     fecha_publicacion = models.DateField()
     disponible = models.BooleanField(default=True)
 
+    # autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.titulo
