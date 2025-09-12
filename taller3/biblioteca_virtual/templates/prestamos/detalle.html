@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle Préstamo - Biblioteca Virtual{% endblock %}
+
+{% block content %}
+    <h4>Datos del Préstamo</h4>
+    <p><b>Usuario:</b> {{ prestamo.usuario }}</p>
+    <p><b>Libro:</b> {{ prestamo.libro }}</p>
+    <p><b>Fecha Préstamo:</b> {{ prestamo.fecha_prestamo|date:"d/m/Y H:i" }}</p>
+    {% if prestamo.fecha_devolucion %}
+        <p><b>Fecha Devolución:</b> {{ prestamo.fecha_devolucion|date:"d/m/Y H:i" }}</p>
+    {% endif %}
+    {% comment %} <p><a href="{% url 'prestamos:editar_prestamo' %}">Editar préstamo</a></p> {% endcomment %}
+    <p><a href="{% url 'prestamos:eliminar_prestamo' prestamo.id %}">Eliminar préstamo</a></p>
+{% endblock %}

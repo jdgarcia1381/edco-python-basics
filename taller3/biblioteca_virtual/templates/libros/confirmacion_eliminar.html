@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirmación - Biblioteca Virtual{% endblock %}
+
+{% block content %}
+    <h4>Eliminación Exitosa!</h4>
+    <p>El libro ha sido eliminado correctamente del sistema.</p>
+    <h4>Datos del Libro Eliminado</h4>
+    <p><b>Título:</b> {{ libro.titulo }}</p>
+    <p><b>Autor:</b> {{ libro.autor }}</p>
+    <p><b>Año Publicación:</b> {{ libro.anio_publicacion }}</p>
+{% endblock %}

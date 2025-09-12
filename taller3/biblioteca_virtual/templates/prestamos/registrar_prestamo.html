@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Registro de Préstamo - Biblioteca Virtual{% endblock %}
+
+{% block content %}
+    <h3>Registro de Nuevo Préstamo</h3>
+    <form method="post" action="/prestamos/registro/">
+        {% csrf_token %}
+        <p>
+            {{ form.usuario.label_tag }}
+            {{ form.usuario }}
+        </p>
+        <p>
+            {{ form.libro.label_tag }}
+            {{ form.libro }}
+        </p>
+        <input type="submit" value="Registrar"/>
+    </form>
+{% endblock %}

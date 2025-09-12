@@ -2,7 +2,6 @@ from django.contrib import messages
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from django.urls import reverse
 
 from .forms import RegistroUsuarioForm
 from .models import Usuario

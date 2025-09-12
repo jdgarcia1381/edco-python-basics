@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Libros - Biblioteca Virtual{% endblock %}
+
+{% block content %}
+    <h4>Lista Libros</h4>
+    <ul>
+        {% for libro in libros %}
+            <li><a href="{% url 'libros:detalle_libro' libro.id  %}">{{libro}}</a></li>
+        {% empty %}
+            <li>No hay libros registrados</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'libros:registrar_libro' %}">Registrar libro</a></p>
+{% endblock %}

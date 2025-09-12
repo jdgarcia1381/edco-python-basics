@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirmación - Biblioteca Virtual{% endblock %}
+
+{% block content %}
+    <h4>¡Registro Exitoso!</h4>
+    <p>El préstamo ha sido registrado correctamente en el sistema.</p>
+    <h4>Datos del Préstamo Registrado</h4>
+    <p><b>Usuario:</b> {{ prestamo.usuario }}</p>
+    <p><b>Libro:</b> {{ prestamo.libro }}</p>
+    <p><b>Fecha Préstamo:</b> {{ prestamo.fecha_prestamo|date:"d/m/Y H:i" }}</p>
+    {% if prestamo.fecha_devolucion %}
+        <p><b>Fecha Devolución:</b> {{ prestamo.fecha_devolucion|date:"d/m/Y H:i" }}</p>
+    {% endif %}
+    <p><a href="{% url 'prestamos:registrar_prestamo' %}">Registrar otro préstamo</a></p>
+{% endblock %}
