@@ -10,6 +10,6 @@
     {% if prestamo.fecha_devolucion %}
         <p><b>Fecha Devolución:</b> {{ prestamo.fecha_devolucion|date:"d/m/Y H:i" }}</p>
     {% endif %}
-    {% comment %} <p><a href="{% url 'prestamos:editar_prestamo' %}">Editar préstamo</a></p> {% endcomment %}
+    <p><a href="{% url 'prestamos:actualizar_prestamo' prestamo.id %}">Actualizar préstamo</a></p>
     <p><a href="{% url 'prestamos:eliminar_prestamo' prestamo.id %}">Eliminar préstamo</a></p>
 {% endblock %}

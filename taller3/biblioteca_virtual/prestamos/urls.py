@@ -1,6 +1,7 @@
 from django.urls import path
 
 from .views import (
+    actualizar_prestamo,
     confirmacion_prestamo,
     detalle_prestamo,
     eliminar_prestamo,
@@ -26,5 +27,8 @@ urlpatterns = [
         "eliminar/<int:prestamo_id>",
         eliminar_prestamo,
         name="eliminar_prestamo",
+    ),
+    path(
+        "actualizar/<int:prestamo_id>", actualizar_prestamo, name="actualizar_prestamo"
     ),
 ]

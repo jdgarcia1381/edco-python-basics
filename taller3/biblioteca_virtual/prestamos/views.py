@@ -53,4 +53,4 @@ def actualizar_prestamo(request, prestamo_id):
     else:
         form = PrestamoUpdateForm(instance=prestamo)
 
-    return render(request, "prestamos/registrar_prestamo.html", {"form": form})
+    return render(request, "prestamos/actualizar_prestamo.html", {"form": form})

@@ -7,6 +7,6 @@
     <p><b>Título:</b> {{ libro.titulo }}</p>
     <p><b>Autor:</b> {{ libro.autor }}</p>
     <p><b>Año Publicación:</b> {{ libro.anio_publicacion }}</p>
-    {% comment %} <p><a href="{% url 'libros:editar_libro' %}">Editar libro</a></p> {% endcomment %}
+    <p><a href="{% url 'libros:actualizar_libro' libro.id %}">Actualizar libro</a></p>
     <p><a href="{% url 'libros:eliminar_libro' libro.id %}">Eliminar libro</a></p>
 {% endblock %}

@@ -1,6 +1,7 @@
 from django.urls import path
 
 from .views import (
+    actualizar_libro,
     confirmacion_libro,
     detalle_libro,
     eliminar_libro,
@@ -26,5 +27,10 @@ urlpatterns = [
         "eliminar/<int:libro_id>",
         eliminar_libro,
         name="eliminar_libro",
+    ),
+    path(
+        "actualizar/<int:libro_id>",
+        actualizar_libro,
+        name="actualizar_libro",
     ),
 ]

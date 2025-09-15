@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Actualizar Libro - Biblioteca Virtual{% endblock %}
+
+{% block content %}
+    <h3>Actualizar Libro</h3>
+    <form method="post" action="/libros/actualizar/{{form.instance.id}}">
+        {% csrf_token %}
+        <p>
+            {{ form.titulo.label_tag }}
+            {{ form.titulo }}
+        </p>
+        <p>
+            {{ form.autor.label_tag }}
+            {{ form.autor }}
+        </p>
+        <p>
+            {{ form.anio_publicacion.label_tag }}
+            {{ form.anio_publicacion }}
+        </p>
+        <input type="submit" value="Actualizar"/>
+    </form>
+{% endblock %}
