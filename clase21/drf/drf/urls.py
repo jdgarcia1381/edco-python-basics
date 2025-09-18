@@ -1,5 +1,5 @@
 """
-URL configuration for django_project project.
+URL configuration for drf project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -18,15 +18,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-# from libros import views
-
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # Opción 1
-    path("libros/", include("libros.urls")),
-    path("usuarios/", include("usuarios.urls")),
-    # Opción 2
-    # path("", views.index, name="index"),
-    # path("libros/", views.lista_libros, name="lista_libros"),
     path("api-auth/", include("rest_framework.urls")),
+    path("api/", include("libros.urls")),
 ]
