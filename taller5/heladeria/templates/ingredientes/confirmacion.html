@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirmación - Heladería{% endblock %}
+
+{% block content %}
+    <h4>¡Registro Exitoso!</h4>
+    <p>El ingrediente ha sido registrado correctamente en el sistema.</p>
+    <h4>Datos del ingrediente creado:</h4>
+    <p><b>Nombre:</b> {{ ingrediente.nombre }}</p>
+    <p><b>Precio:</b> {{ ingrediente.precio }}</p>
+    <p><b>Calorías:</b> {{ ingrediente.calorias }}</p>
+    <p><b>Inventario:</b> {{ ingrediente.inventario }}</p>
+    <p><b>Es Vegetariano?:</b> {{ ingrediente.es_vegetariano }}</p>
+    <p><b>Es Sano?:</b> {{ ingrediente.es_sano }}</p>
+    <p><b>Tipo:</b> {{ ingrediente.tipo }}</p>
+    <p><b>Sabor:</b> {{ ingrediente.sabor }}</p>
+    <p><a href="{% url 'ventas:crear_ingrediente' %}">Crear otro ingrediente</a></p>
+{% endblock %}

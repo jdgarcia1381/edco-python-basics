@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Crear Producto - Heladería{% endblock %}
+
+{% block content %}
+    <h3>Crear Producto</h3>
+    <form method="post" action="/productos/crear/">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" class="btn btn-primary" value="Crear"/>
+    </form>
+{% endblock %}

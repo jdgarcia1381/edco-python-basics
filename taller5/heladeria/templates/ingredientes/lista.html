@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Ingredientes - Biblioteca Virtual{% endblock %}
+
+{% block content %}
+    <h4>Lista Ingredientes</h4>
+    <ul>
+        {% for ingrediente in ingredientes %}
+            <li><a href="{% url 'ventas:detalle_ingrediente' ingrediente.id  %}">{{ingrediente}}</a></li>
+        {% empty %}
+            <li>No hay ingredientes registrados</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'ventas:crear_ingrediente' %}">Crear ingrediente</a></p>
+{% endblock %}

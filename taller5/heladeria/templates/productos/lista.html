@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Productos - Biblioteca Virtual{% endblock %}
+
+{% block content %}
+    <h4>Lista Productos</h4>
+    <ul>
+        {% for producto in productos %}
+            <li><a href="{% url 'ventas:detalle_producto' producto.id  %}">{{producto}}</a></li>
+        {% empty %}
+            <li>No hay productos registrados</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'ventas:crear_producto' %}">Crear producto</a></p>
+{% endblock %}

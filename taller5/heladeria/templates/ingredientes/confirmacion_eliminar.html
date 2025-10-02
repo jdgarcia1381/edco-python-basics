@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirmación - Heladería{% endblock %}
+
+{% block content %}
+    <h4>Eliminación Exitosa!</h4>
+    <p>El ingrediente ha sido eliminado correctamente del sistema.</p>
+    <h4>Datos del ingrediente eliminado:</h4>
+    <p><b>Nombre:</b> {{ ingrediente.nombre }}</p>
+    <p><b>Precio:</b> {{ ingrediente.precio }}</p>
+    <p><b>Calorías:</b> {{ ingrediente.calorias }}</p>
+    <p><b>Inventario:</b> {{ ingrediente.inventario }}</p>
+    <p><b>Es Vegetariano?:</b> {{ ingrediente.es_vegetariano }}</p>
+    <p><b>Es Sano?:</b> {{ ingrediente.es_sano }}</p>
+    <p><b>Tipo:</b> {{ ingrediente.tipo }}</p>
+    <p><b>Sabor:</b> {{ ingrediente.sabor }}</p>
+{% endblock %}

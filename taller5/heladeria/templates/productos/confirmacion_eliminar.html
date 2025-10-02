@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirmación - Heladería{% endblock %}
+
+{% block content %}
+    <h4>Eliminación Exitosa!</h4>
+    <p>El producto ha sido eliminado correctamente del sistema.</p>
+    <h4>Datos del producto eliminado:</h4>
+    <p><b>Nombre:</b> {{ producto.nombre }}</p>
+    <p><b>Precio Público:</b> {{ producto.precio_publico }}</p>
+    <p><b>Tipo:</b> {{ producto.tipo }}</p>
+    <p><b>Vaso:</b> {{ producto.vaso }}</p>
+    <p><b>Volumen (Oz):</b> {{ producto.volumen_onzas }}</p>
+    <p><b>Ingredientes:</b></p>
+    <ul>
+        {% for ingrediente in producto.ingredientes.all %}
+            <li><a href="{% url 'ventas:detalle_ingrediente' ingrediente.id  %}">{{ingrediente}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

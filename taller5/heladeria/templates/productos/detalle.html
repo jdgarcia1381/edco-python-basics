@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle Producto - Biblioteca Virtual{% endblock %}
+
+{% block content %}
+    <h4>Datos del producto:</h4>
+    <p><b>Nombre:</b> {{ producto.nombre }}</p>
+    <p><b>Precio Público:</b> {{ producto.precio_publico }}</p>
+    <p><b>Tipo:</b> {{ producto.tipo }}</p>
+    <p><b>Vaso:</b> {{ producto.vaso }}</p>
+    <p><b>Volumen (Oz):</b> {{ producto.volumen_onzas }}</p>
+    <p><b>Ingredientes:</b></p>
+    <ul>
+        {% for ingrediente in producto.ingredientes.all %}
+            <li><a href="{% url 'ventas:detalle_ingrediente' ingrediente.id  %}">{{ingrediente}}</a></li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'ventas:actualizar_producto' producto.id %}">Actualizar producto</a></p>
+    <p><a href="{% url 'ventas:eliminar_producto' producto.id %}">Eliminar producto</a></p>
+{% endblock %}

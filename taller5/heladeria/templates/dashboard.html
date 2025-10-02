@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Heladería{% endblock %}
+
+{% block content %}
+    <h4>Productos</h4>
+    <ul>
+        {% for producto in productos %}
+            {% comment %} <li><a href="{% url 'libros:detalle_libro' libro.id  %}">{{libro}}</a></li> {% endcomment %}
+            <li>{{producto}}</li>
+        {% empty %}
+            <li>No hay productos registrados</li>
+        {% endfor %}
+    </ul>
+    {% comment %} <p><a href="{% url 'libros:registrar_libro' %}">Registrar libro</a></p> {% endcomment %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirmación - Heladería{% endblock %}
+
+{% block content %}
+    <h4>Eliminación Exitosa!</h4>
+    <p>El venta ha sido eliminado correctamente del sistema.</p>
+    <h4>Datos del venta eliminado:</h4>
+    <p><b>Producto:</b> {{ venta.producto }}</p>
+    <p><b>Usuario:</b> {{ venta.usuario }}</p>
+    <p><b>Cantidad:</b> {{ venta.cantidad }}</p>
+    <p><b>Total:</b> {{ venta.total }}</p>
+    <p><b>Fecha:</b> {{ venta.fecha }}</p>
+{% endblock %}

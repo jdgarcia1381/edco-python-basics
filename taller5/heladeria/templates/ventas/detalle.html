@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle Venta - Biblioteca Virtual{% endblock %}
+
+{% block content %}
+    <h4>Datos del venta:</h4>
+    <p><b>Producto:</b> {{ venta.producto }}</p>
+    <p><b>Usuario:</b> {{ venta.usuario }}</p>
+    <p><b>Cantidad:</b> {{ venta.cantidad }}</p>
+    <p><b>Total:</b> {{ venta.total }}</p>
+    <p><b>Fecha:</b> {{ venta.fecha }}</p>
+    <p><a href="{% url 'ventas:actualizar_venta' venta.id %}">Actualizar venta</a></p>
+    <p><a href="{% url 'ventas:eliminar_venta' venta.id %}">Eliminar venta</a></p>
+{% endblock %}

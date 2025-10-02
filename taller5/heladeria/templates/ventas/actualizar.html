@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Actualizar Venta - Heladería{% endblock %}
+
+{% block content %}
+    <h3>Actualizar Venta</h3>
+    <form method="post" action="/ventas/actualizar/{{form.instance.id}}">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" class="btn btn-primary" value="Actualizar"/>
+    </form>
+{% endblock %}
